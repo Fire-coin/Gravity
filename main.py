@@ -3,8 +3,8 @@ from math import sqrt
 
 G: float = 6.6743e-11
 
-# This is suposed to be struct aka. everything public
 class Object:
+    """This is suposed to be struct aka. everything public"""
     def __init__(self, mass: float, radius: float, color: str, center: list[float], id: int) -> None:
         self.mass = mass
         self.radius = radius
@@ -58,7 +58,7 @@ class GameScreen(tk.Canvas):
         
         id = f"object{o.id}"
         acceleration: list[float] = [0, 0]
-
+        # TODO test to only search through values, because it has 0 distance from itself
         for key, value in self.__objects.items():
             if (key == id):
                 continue
@@ -87,16 +87,40 @@ def terminate(e: tk.Event):
     flag = False
 
 
+def toggleGame() -> None:
+    global running
+    running = not running
+
+
+def startGame(t: float, dt: float) -> None:
+    global flag, running
+    while (flag):
+        while (running and flag):
+            t += dt
+            for i in objects:
+                game.draw_object(i, dt)
+            for i in objects:
+                game.render_object(i, dt)
+            game.update()
+        root.update()
+
+
 if (__name__ == "__main__"):
     global flag
-    flag = True
+    global running
+    flag: bool = True
+    running: bool = True
     
     root = tk.Tk()
 
     gameWidth = 1000
     gameHeight = 700
 
-    game = GameScreen(root, width= gameWidth, height= gameHeight, bg= "grey", scale= 1e10)
+    game = GameScreen(root, width= gameWidth, height= gameHeight, bg= "black", scale= 1e10)
+
+
+    startStopButton = tk.Button(root, text= "Start / Stop", command= toggleGame)
+    startStopButton.pack()
 
     root.bind("<Escape>", terminate)
     t: float = 0
@@ -113,16 +137,8 @@ if (__name__ == "__main__"):
     objects = [o1, o2, o3, o4]
 
     # Main game loop
-    
-    while (flag):
-        t += dt
-        for i in objects:
-            game.draw_object(i, dt)
-        for i in objects:
-            game.render_object(i, dt)
-        game.update()
+    startGame(t, dt)
 
-    
     root.destroy()
 
     root.mainloop()
