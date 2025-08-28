@@ -15,6 +15,7 @@ def toggleGame(game: GameScreen, e: tk.Event) -> None:
         return
     deletePreview(game)
     running = not running
+    game.showInfo(running)
 
 
 def startGame(t: float, dt: float, game: GameScreen) -> None:
@@ -35,7 +36,6 @@ if (__name__ == "__main__"):
     running: bool = False
 
     root = tk.Tk()
-
 
     setUpGlobals(root)
 

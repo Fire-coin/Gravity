@@ -1,5 +1,5 @@
 from copy import deepcopy
-from math import sqrt
+from math import sqrt, log10
 import tkinter as tk
 
 G: float = 6.6743e-11
@@ -13,6 +13,7 @@ class Object:
         self.center = center
         self.ID = id
         self.velocity: list[float] = [0, 0]
+        
     
     def __str__(self) -> str:
         return f"Object: {self.ID}, {self.mass=}, {self.radius=}, {self.velocity=}"
@@ -27,6 +28,12 @@ class GameScreen(tk.Canvas):
         self.__w.pack()
         self.__objects: dict[str, Object] = {}
         self.__idCounter = 0
+        power: int = int(log10(self.__scale))
+
+        self.__w.create_text(40, 20, 
+                             text= f"Scale: {self.__scale // (10 ** power) : .2f}e{power}\n" +
+                             f"State: Paused",
+                             fill= "white", tags= ["Info"], width= 200)
     
 
     def getCanvas(self) -> tk.Canvas:
@@ -118,3 +125,9 @@ class GameScreen(tk.Canvas):
     
     def getScale(self) -> float:
         return self.__scale
+    
+    def showInfo(self, running: bool) -> None:
+        power: int = int(log10(self.__scale))
+
+        self.__w.itemconfigure("Info", text= f"Scale: {self.__scale // (10 ** power) : .2f}e{power}\n" +
+                             f"State: {"Running" if running else "Paused"}")
