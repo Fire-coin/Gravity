@@ -39,8 +39,11 @@ if (__name__ == "__main__"):
 
     setUpGlobals(root)
 
-    gameWidth = 1000
-    gameHeight = 700
+    sHeight = root.winfo_screenheight()
+    sWidth = root.winfo_screenwidth()
+
+    gameWidth = sWidth
+    gameHeight = sHeight - 200
 
     game = GameScreen(root, width= gameWidth, height= gameHeight, bg= "black", scale= 1e5)
 

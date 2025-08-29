@@ -42,7 +42,16 @@ class GameScreen(tk.Canvas):
     def getMaster(self) -> tk.Tk:
         return self.__master
 
-    
+
+    def getObject(self, objectOrId: Object | int) -> Object:
+        if (isinstance(objectOrId, Object)):
+            o = self.__objects[f"object{objectOrId.ID}"]
+        else:
+            o = self.__objects[f"object{objectOrId}"]
+        
+        return o
+
+
     def create_object(self, mass: float, radius: float, color: str, center: list[float]) -> Object:
         o = Object(mass, radius, color, center, self.__idCounter)
         self.__objects[f"object{o.ID}"] = o
