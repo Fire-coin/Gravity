@@ -34,7 +34,7 @@ class GameScreen(tk.Canvas):
                              f"State: Paused",
                              fill= "white", tags= ["Info"], width= 200)
 
-        self.__win = self.__w.create_window(4, 50, anchor= 'w')
+        self.__win = self.__w.create_window(4, 60, anchor= 'w')
         
     def getWindowId(self) -> int:
         return self.__win
