@@ -34,7 +34,11 @@ class GameScreen(tk.Canvas):
                              text= f"Scale: {self.__scale // (10 ** power) : .2f}e{power}\n" +
                              f"State: Paused",
                              fill= "white", tags= ["Info"], width= 200)
-    
+
+        self.__win = self.__w.create_window(4, 50, anchor= 'w')
+        
+    def getWindowId(self) -> int:
+        return self.__win
 
     def getCanvas(self) -> tk.Canvas:
         return self.__w

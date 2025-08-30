@@ -18,7 +18,7 @@ def toggleGame(game: GameScreen, e: tk.Event) -> None:
     game.showInfo(running)
 
 
-def startGame(t: float, dt: float, game: GameScreen) -> None:
+def startGame(t: float, dt: float, game: GameScreen, root: tk.Tk) -> None:
     global flag, running
     while (flag):
         while (running and flag):
@@ -27,6 +27,20 @@ def startGame(t: float, dt: float, game: GameScreen) -> None:
             game.render_objects(dt)
             game.update()
         root.update()
+
+
+def showHelpWindow() -> None:
+    helpWin = tk.Tk()
+
+    tk.Label(helpWin, text= "Press Space bar to start / pause simulation\n" + 
+             "Press left mouse button to select or create new object object\n" +
+             "Press right mouse button to delete selected object\n" + 
+             "Press Enter to apply changes made in pop up menu with properties\n" + 
+             "Press left Alt to save object into simulation screen\n" + 
+             "Press c to copy selected object\n").pack()
+    
+    tk.Button(helpWin, text= "Understood", command= lambda : helpWin.destroy()).pack()
+
 
 
 if (__name__ == "__main__"):
@@ -46,6 +60,11 @@ if (__name__ == "__main__"):
     gameHeight = sHeight - 200
 
     game = GameScreen(root, width= gameWidth, height= gameHeight, bg= "black", scale= 1e5)
+
+    helpButton = tk.Button(game.getCanvas(), text= "Help", command= showHelpWindow)
+
+    winId = game.getWindowId()
+    game.getCanvas().itemconfigure(winId, window= helpButton)
 
     game.getCanvas().bind("<Button-1>", lambda e: previewObject(e, game))
     game.getCanvas().bind("<Button-3>", lambda e: deletePreview(game))
@@ -69,7 +88,7 @@ if (__name__ == "__main__"):
     objects = [o1, o2, o3, o4]
 
     # Main game loop
-    startGame(t, dt, game)
+    startGame(t, dt, game, root)
 
     root.destroy()
 
