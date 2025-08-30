@@ -10,6 +10,7 @@ By pressing Space bar you will start / pause simulation, the current state of si
 
 ## Object properties
 <img width="213" height="300" alt="Screenshot 2025-08-30 153514" src="https://github.com/user-attachments/assets/b2931cce-ad4c-4531-8ad0-bc854f69de75" />
+
 ### Mass
 You can enter any numerical value you want, and in any way, however it is recomended to enter in standart form, to keep it managable
 Default value is 5.972e24, which is same as mass of Earth
@@ -56,6 +57,7 @@ By pressing c key, you will selected object, this mean that current selected obj
 
 ## Use default objects
 <img width="439" height="385" alt="Screenshot 2025-08-30 153655" src="https://github.com/user-attachments/assets/bee55de1-7d28-4861-ae1f-fdedd0ccb390" />
+
 Press Defaults button and the menu will pop up, then select which one you want.
 
 # Creating executable localy
