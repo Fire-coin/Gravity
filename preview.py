@@ -9,7 +9,7 @@ class ObjectForm:
     def __init__(self, master: tk.Tk) -> None:
         self.frame1 = tk.Frame(master, height= 300)
         self.frame2 = tk.Frame(self.frame1)
-        self.mass = tk.DoubleVar(self.frame1, name= "mass", value= 1e24)
+        self.mass = tk.DoubleVar(self.frame1, name= "mass", value= 5.972e24)
         self.color = tk.StringVar(self.frame1, name= "color", value= "blue")
         self.radius = tk.DoubleVar(self.frame1, name= "radius", value= 50)
         self.velX = tk.DoubleVar(self.frame1, name= "velX", value= 0)
