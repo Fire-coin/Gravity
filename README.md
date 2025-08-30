@@ -1,5 +1,4 @@
-
-<img width="1913" height="912" alt="img1" src="https://github.com/Fire-coin/Gravity/tree/main/img/img1.png" />
+<img width="1913" height="912" alt="Screenshot 2025-08-30 151956" src="https://github.com/user-attachments/assets/2e8df213-576a-45c1-84e0-916a1b1a0dc2" />
 
 # Gravity Simulator
 This is simple gravity simulation of bodies in flat space
@@ -10,6 +9,7 @@ There is no colision detection
 By pressing Space bar you will start / pause simulation, the current state of simulation is shown in top left corner in info menu.
 
 ## Object properties
+<img width="213" height="300" alt="Screenshot 2025-08-30 153514" src="https://github.com/user-attachments/assets/b2931cce-ad4c-4531-8ad0-bc854f69de75" />
 ### Mass
 You can enter any numerical value you want, and in any way, however it is recomended to enter in standart form, to keep it managable
 Default value is 5.972e24, which is same as mass of Earth
@@ -53,6 +53,10 @@ If selected object is not placed in the simulation using left Alt, it will be de
 By pressing right mouse button you can delete selected object.
 ### Copying selected object
 By pressing c key, you will selected object, this mean that current selected object will be placed in the simulation and there will be new selected object with same properties as original object.
+
+## Use default objects
+<img width="439" height="385" alt="Screenshot 2025-08-30 153655" src="https://github.com/user-attachments/assets/bee55de1-7d28-4861-ae1f-fdedd0ccb390" />
+Press Defaults button and the menu will pop up, then select which one you want.
 
 # Creating executable localy
 Maybe you want to change some things in the code, and make an executable from it, this is step by step to do it.
