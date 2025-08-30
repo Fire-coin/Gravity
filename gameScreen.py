@@ -110,7 +110,7 @@ class GameScreen(tk.Canvas):
         
         id = f"object{o.ID}"
         acceleration: list[float] = [0, 0]
-        # TODO test to only search through values, because it has 0 distance from itself
+        
         for key, value in self.__objects.items():
             if (key == id):
                 continue

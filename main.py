@@ -33,7 +33,7 @@ def showHelpWindow() -> None:
     helpWin = tk.Tk()
 
     tk.Label(helpWin, text= "Press Space bar to start / pause simulation\n" + 
-             "Press left mouse button to select or create new object object\n" +
+             "Press left mouse button to select or create new object\n" +
              "Press right mouse button to delete selected object\n" + 
              "Press Enter to apply changes made in pop up menu with properties\n" + 
              "Press left Alt to save object into simulation screen\n" + 
@@ -58,6 +58,8 @@ if (__name__ == "__main__"):
 
     gameWidth = sWidth
     gameHeight = sHeight - 200
+
+    root.geometry(f"{gameWidth}x{gameHeight}+0-200")
 
     game = GameScreen(root, width= gameWidth, height= gameHeight, bg= "black", scale= 1e5)
 
