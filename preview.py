@@ -215,3 +215,71 @@ def createObject(game: GameScreen) -> None:
 
     deletePreviewForm()
     resetBinding(game)
+
+
+def setUpObject(mass: float, radius: float, color: str) -> None:
+    global last_form
+
+    last_form.mass.set(mass)
+    last_form.radius.set(radius)
+    last_form.color.set(color)
+
+
+def selectPrebuilt(type: str, win: tk.Tk, game: GameScreen) -> None:
+    global last_object
+    global last_form
+
+    createForm(game)
+    
+    match (type):
+        case "Sun":
+            setUpObject(1.989e30, 200, "yellow")
+        case "Mercury":
+            setUpObject(0.33e24, 20, "grey")
+        case "Venus":
+            setUpObject(4.87e24, 25, "#AC950E")
+        case "Earth":
+            setUpObject(5.97e24, 30, "green")
+        case "Moon":
+            setUpObject(7.347e22, 10, "light grey")
+        case "Mars":
+            setUpObject(0.642e24, 20, "red")
+        case "Jupiter":
+            setUpObject(1898e24, 60, "#D8C9BE")
+        case "Saturn":
+            setUpObject(568e24, 50, "beige")
+        case "Uranus":
+            setUpObject(86.8e24, 40, "#83D8D4")
+        case "Neptune":
+            setUpObject(102e24, 45, "blue")
+        case _:
+            pass
+    win.destroy()
+    game.getMaster().bind("<Return>", lambda ee: showPreviewObject(None, game))
+    game.getMaster().bind("<Alt_L>", lambda ee: createObject(game))
+    game.getMaster().bind("c", lambda ee: copyObject(game))
+    game.getCanvas().unbind("<Button-1>")
+    game.getCanvas().bind("<Button-1>", lambda ee: showPreviewObject(ee, game))
+    showPreviewObject(None, game)
+
+
+def showPrebuiltWindow(game: GameScreen) -> None:
+    prebuiltWin = tk.Tk()
+
+    tk.Label(prebuiltWin, text= "Select one of defualts to add into simulation").pack()
+    
+    frame = tk.Frame(prebuiltWin)
+    frame.pack()
+    bodies = ["Sun", "Mercury", "Venus", "Earth", "Moon", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    tk.Button(frame, text= bodies[0], command= lambda : selectPrebuilt(bodies[0], prebuiltWin, game)).grid(column= 1, row= 1)
+    tk.Button(frame, text= bodies[1], command= lambda : selectPrebuilt(bodies[1], prebuiltWin, game)).grid(column= 1, row= 2)
+    tk.Button(frame, text= bodies[2], command= lambda : selectPrebuilt(bodies[2], prebuiltWin, game)).grid(column= 1, row= 3)
+    tk.Button(frame, text= bodies[3], command= lambda : selectPrebuilt(bodies[3], prebuiltWin, game)).grid(column= 1, row= 4)
+    tk.Button(frame, text= bodies[4], command= lambda : selectPrebuilt(bodies[4], prebuiltWin, game)).grid(column= 1, row= 5)
+    tk.Button(frame, text= bodies[5], command= lambda : selectPrebuilt(bodies[5], prebuiltWin, game)).grid(column= 1, row= 6)
+    tk.Button(frame, text= bodies[6], command= lambda : selectPrebuilt(bodies[6], prebuiltWin, game)).grid(column= 1, row= 7)
+    tk.Button(frame, text= bodies[7], command= lambda : selectPrebuilt(bodies[7], prebuiltWin, game)).grid(column= 1, row= 8)
+    tk.Button(frame, text= bodies[8], command= lambda : selectPrebuilt(bodies[8], prebuiltWin, game)).grid(column= 1, row= 9)
+    tk.Button(frame, text= bodies[9], command= lambda : selectPrebuilt(bodies[9], prebuiltWin, game)).grid(column= 1, row= 10)
+
+    tk.Button(prebuiltWin, text= "Exit", command= lambda : prebuiltWin.destroy()).pack(pady= 10)

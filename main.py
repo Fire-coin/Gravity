@@ -42,45 +42,6 @@ def showHelpWindow() -> None:
     tk.Button(helpWin, text= "Understood", command= lambda : helpWin.destroy()).pack()
 
 
-def selectPrebuilt(type: str, win: tk.Tk) -> None:
-    match (type):
-        case "Sun":
-            pass
-        case "Mercury":
-            pass
-        case "Venus":
-            pass
-        case "Earth":
-            pass
-        case "Moon":
-            pass
-        case "Mars":
-            pass
-        case "Jupiter":
-            pass
-        case "Saturn":
-            pass
-        case "Uranus":
-            pass
-        case "Neptune":
-            pass
-        case _:
-            pass
-    win.destroy()
-
-
-def showPrebuiltWindow() -> None:
-    prebuiltWin = tk.Tk()
-
-    tk.Label(prebuiltWin, text= "Select one of defualts to add into simulation").pack()
-    
-    frame = tk.Frame(prebuiltWin)
-    frame.pack()
-
-    tk.Button(frame, text= "Sun", command= lambda : selectPrebuilt("Sun", prebuiltWin)).grid(column= 1, row= 1)
-
-    tk.Button(frame, text= "Exit", command= lambda : prebuiltWin.destroy())
-
     
 
 
@@ -105,15 +66,14 @@ if (__name__ == "__main__"):
     buttonFrame = tk.Frame(game.getCanvas(), bg= "black")
 
     helpButton = tk.Button(buttonFrame, text= "Help", command= showHelpWindow)
-    prebuiltsButton = tk.Button(buttonFrame, text= "Defaults", command= showPrebuiltWindow)
+    prebuiltsButton = tk.Button(buttonFrame, text= "Defaults", command= lambda : showPrebuiltWindow(game))
 
     helpButton.pack()
     prebuiltsButton.pack()
 
     winId = game.getWindowId()
     game.getCanvas().itemconfigure(winId, window= buttonFrame)
-    # game.getCanvas().itemconfigure(winId, window= 
-
+    
     game.getCanvas().bind("<Button-1>", lambda e: previewObject(e, game))
     game.getCanvas().bind("<Button-3>", lambda e: deletePreview(game))
 
