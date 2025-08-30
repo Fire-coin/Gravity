@@ -1,3 +1,6 @@
+
+<img width="1913" height="912" alt="Screenshot 2025-08-30 151956" src="https://github.com/user-attachments/assets/16e800e4-562c-4342-bcb5-5a9c274ffc0e" />
+
 # Gravity Simulator
 This is simple gravity simulation of bodies in flat space
 There is no colision detection
@@ -21,6 +24,7 @@ This is x component of velocity vector of object, measured in m/s
 Default is set to 0
 ### Velocity Y
 This is y component of velocity vector of object, measured in m/s
+
 Default is set to 0
 ### X coord
 X coordinate of center of an object
