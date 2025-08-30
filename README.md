@@ -1,10 +1,10 @@
-#Gravity Simulator
+# Gravity Simulator
 This is simple gravity simulation of bodies in flat space
 
-#Usage
+# Usage
 Press the left mouse button to create an object in space, with that there will be a menu in the bottom of screen, where you can change its properties, such as mass, radius, velocity, .etc
-##Object properties
-###Mass
+## Object properties
+### Mass
 
 
 To create exe file you need to install pyinstaller first:
