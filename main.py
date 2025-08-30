@@ -59,8 +59,6 @@ if (__name__ == "__main__"):
     gameWidth = sWidth
     gameHeight = sHeight - 200
 
-    root.geometry(f"{gameWidth}x{gameHeight}+0-200")
-
     game = GameScreen(root, width= gameWidth, height= gameHeight, bg= "black", scale= 1e5)
 
     helpButton = tk.Button(game.getCanvas(), text= "Help", command= showHelpWindow)
@@ -76,18 +74,6 @@ if (__name__ == "__main__"):
 
     t: float = 0
     dt: float = 0.1
-
-    o1 = game.create_object(1e20, 3, "yellow", [2e7, 4.8e7])
-    o2 = game.create_object(1e22, 40, "blue", [7e7, 2e7])
-    o3 = game.create_object(6e24, 64, "green", [6e7, 5e7])
-    o4 = game.create_object(1.9e24, 20, "purple", [2e7, 5e7])
-
-    o1.velocity[0] = 1.3e4
-
-    game.changeObject(o1)
-
-
-    objects = [o1, o2, o3, o4]
 
     # Main game loop
     startGame(t, dt, game, root)

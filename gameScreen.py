@@ -14,7 +14,6 @@ class Object:
         self.ID = id
         self.velocity: list[float] = [0, 0]
         
-    
     def __str__(self) -> str:
         return f"Object: {self.ID}, {self.mass=}, {self.radius=}, {self.velocity=}"
 
@@ -70,10 +69,7 @@ class GameScreen(tk.Canvas):
         return deepcopy(o)
 
     def draw_object(self, objectOrId: Object | int, dt: float) -> None:
-        if (isinstance(objectOrId, Object)):
-            o = self.__objects[f"object{objectOrId.ID}"]
-        else:
-            o = self.__objects[f"object{objectOrId}"]
+        o = self.getObject(objectOrId)
         
         o.center[0] += o.velocity[0] * dt
         o.center[1] += o.velocity[1] * dt
@@ -103,14 +99,11 @@ class GameScreen(tk.Canvas):
 
 
     def render_object(self, objectOrId: Object | int, dt: float) -> None:
-        if (isinstance(objectOrId, Object)):
-            o = objectOrId
-        else:
-            o = self.__objects[f"object{objectOrId}"]
+        o = self.getObject(objectOrId)
         
         id = f"object{o.ID}"
         acceleration: list[float] = [0, 0]
-        
+
         for key, value in self.__objects.items():
             if (key == id):
                 continue
