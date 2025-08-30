@@ -1,5 +1,5 @@
 
-<img width="1913" height="912" alt="img1" src="https://github.com/Fire-coin/Gravity/tree/main/img" />
+<img width="1913" height="912" alt="img1" src="https://github.com/Fire-coin/Gravity/tree/main/img/img1.png" />
 
 # Gravity Simulator
 This is simple gravity simulation of bodies in flat space
